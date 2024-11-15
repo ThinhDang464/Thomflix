@@ -9,7 +9,7 @@ const initialState = {
 
 // 2. Slice Creation
 const userSlice = createSlice({
-  name: "user", // Name of this slice in Redux store
+  name: "user", // Name of this slice in Redux store, used for debug
   initialState, // Default state defined above
   reducers: {
     // Functions to update state
@@ -36,4 +36,13 @@ const userSlice = createSlice({
 // action = package of new data being sent
 //action.payload = the actual data inside the package
 
+// 1. Export actions for dispatching - the controls
 export const { setUserLoginDetails, setSignOutState } = userSlice.actions;
+
+// 2. Export selectors for accessing state 0 the display
+export const selectUserName = (state) => state.user?.name;
+export const selectUserEmail = (state) => state.user?.email;
+export const selectUserPhoto = (state) => state.user?.photo;
+
+// 3. Export reducer for store setup (REQUIRED), required for redux to work - the engine
+export default userSlice.reducer;
