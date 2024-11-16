@@ -64,6 +64,7 @@ const Header = (props) => {
   //setUser function
   //take in user, and dispatch user login details
   const setUser = (user) => {
+    console.log("Setting user with photo:", user.photoURL); // Debug
     dispatch(
       //all of props coming from the response/result can be viewed in console
       //dispatch to rediux store

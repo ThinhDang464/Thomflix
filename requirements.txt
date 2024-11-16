@@ -1,0 +1,5 @@
+react-slick
+redux
+redux toolkit
+firebase tool kit
+slick css theme, carousel
