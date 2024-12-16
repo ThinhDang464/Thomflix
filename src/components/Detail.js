@@ -17,6 +17,7 @@ const Detail = (props) => {
         "This is a non-profit project and not affiliated with Disney+ or any streaming service. " +
         "All movie rights belong to their respective owners."
     );
+
     const fetchMovieDetails = async () => {
       const url = `https://api.themoviedb.org/3/movie/${id}?append_to_response=images,videos`;
       const options = {
@@ -56,13 +57,16 @@ const Detail = (props) => {
       <Background>
         <img src={`${IMAGE_BASE_URL}${movieDetails?.backdrop_path}`} alt="" />
       </Background>
+
       <ContentMeta>
         {movieDetails?.logoPath ? (
           <LogoImg src={`${IMAGE_BASE_URL}${movieDetails.logoPath}`} alt="" />
         ) : (
           <Title>{movieDetails?.title}</Title>
         )}
+
         <Description>{movieDetails?.overview}</Description>
+
         <Details>
           <DetailItem>
             <DetailLabel>Rating:</DetailLabel>
@@ -77,6 +81,7 @@ const Detail = (props) => {
             {new Date(movieDetails?.release_date).getFullYear()}
           </DetailItem>
         </Details>
+
         <Controls>
           <PlayButton
             onClick={() => {
@@ -96,6 +101,7 @@ const Detail = (props) => {
           </TrailerButton>
         </Controls>
       </ContentMeta>
+
       {showMovie && (
         <MovieContainer>
           <CloseButton onClick={() => setShowMovie(false)}>×</CloseButton>
@@ -108,6 +114,7 @@ const Detail = (props) => {
           />
         </MovieContainer>
       )}
+
       {showTrailer && movieDetails?.trailerKey && (
         <MovieContainer>
           <CloseButton onClick={() => setShowTrailer(false)}>×</CloseButton>
@@ -123,6 +130,7 @@ const Detail = (props) => {
     </Container>
   );
 };
+
 const Container = styled.div`
   position: relative;
   min-height: calc(100vh - 250px);
@@ -131,6 +139,7 @@ const Container = styled.div`
   top: 72px;
   padding: 0 calc(3.5vw + 5px);
 `;
+
 const Background = styled.div`
   position: fixed;
   top: 0;
@@ -139,29 +148,34 @@ const Background = styled.div`
   bottom: 0;
   z-index: -1;
   opacity: 0.8;
+
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 `;
+
 const ContentMeta = styled.div`
   max-width: 874px;
   margin-top: 30px;
   color: white;
 `;
+
 const LogoImg = styled.img`
   max-width: 600px;
   min-height: 200px;
   width: 35vw;
   margin-bottom: 20px;
 `;
+
 const Title = styled.h1`
   font-size: 40px;
   margin-bottom: 20px;
   letter-spacing: 1px;
   font-weight: 500;
 `;
+
 const Description = styled.div`
   line-height: 1.6;
   font-size: 20px;
@@ -169,6 +183,7 @@ const Description = styled.div`
   max-width: 760px;
   letter-spacing: 0.5px;
 `;
+
 const Details = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -177,21 +192,25 @@ const Details = styled.div`
   font-size: 16px;
   letter-spacing: 0.5px;
 `;
+
 const DetailItem = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
 `;
+
 const DetailLabel = styled.span`
   font-weight: 500;
   color: rgba(249, 249, 249, 0.8);
 `;
+
 const Controls = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
   margin-top: 24px;
 `;
+
 const PlayButton = styled.button`
   font-size: 15px;
   padding: 0px 24px;
@@ -208,24 +227,29 @@ const PlayButton = styled.button`
   color: rgb(0, 0, 0);
   transition: all 0.2s ease;
   font-weight: 500;
+
   &:hover {
     background: rgb(198, 198, 198);
     transform: scale(1.05);
   }
+
   @media (max-width: 768px) {
     height: 45px;
     padding: 0px 12px;
     font-size: 12px;
   }
 `;
+
 const TrailerButton = styled(PlayButton)`
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgb(249, 249, 249);
   color: rgb(249, 249, 249);
+
   &:hover {
     background: rgba(0, 0, 0, 0.6);
   }
 `;
+
 const MovieContainer = styled.div`
   position: fixed;
   top: 50%;
@@ -239,6 +263,7 @@ const MovieContainer = styled.div`
   overflow: hidden;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
 `;
+
 const CloseButton = styled.button`
   position: absolute;
   right: 15px;
@@ -256,9 +281,11 @@ const CloseButton = styled.button`
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+
   &:hover {
     background: rgba(0, 0, 0, 0.8);
     transform: scale(1.1);
   }
 `;
+
 export default Detail;
