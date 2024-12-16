@@ -1,4 +1,2 @@
-export const TOKEN =
-  "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMzUwODRjYjRkYTZjZjBlY2Q2Zjc3ZGQ4ZTIwMzIyZSIsIm5iZiI6MTczMTY1NTI4Mi42MjIzODcsInN1YiI6IjY2MmYzZWE2MDI4ZjE0MDEyMjY5MzFmZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.y4s5PBsGbsIqTuCW3pCzZgXj7m5WzbeUWMIgSPbgQic";
-
-export const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
+export const TOKEN = process.env.REACT_APP_TMDB_TOKEN;
+export const IMAGE_BASE_URL = process.env.REACT_APP_IMAGE_BASE_URL;
