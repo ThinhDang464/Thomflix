@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { TOKEN, IMAGE_BASE_URL } from "../config";
+import { Link } from "react-router-dom"; //click link and react no refresh
 
 const ImageSlider = (props) => {
   //react state for movies
@@ -52,10 +53,12 @@ const ImageSlider = (props) => {
         ) => (
           <Wrap key={movie.id}>
             <ImageContainer>
-              <img
-                src={`${IMAGE_BASE_URL}${movie.backdrop_path}`} //template literal
-                alt={movie.title}
-              />
+              <Link to={`/detail/${movie.id}`} key={movie.id}>
+                <img
+                  src={`${IMAGE_BASE_URL}${movie.backdrop_path}`} //template literal
+                  alt={movie.title}
+                />
+              </Link>
             </ImageContainer>
           </Wrap>
         )

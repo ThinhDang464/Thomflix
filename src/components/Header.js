@@ -5,6 +5,7 @@ import { signInWithPopup } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import Search from "./Search";
 //selector we created need import from userSlice
 import {
   selectUserName,
@@ -92,10 +93,7 @@ const Header = (props) => {
                 <span>HOME</span>
               </a>
 
-              <a href="/search">
-                <img src="/images/search-icon.svg" alt="search" />
-                <span>SEARCH</span>
-              </a>
+              <Search />
 
               <a href="/originals">
                 <img src="/images/original-icon.svg" alt="originals" />
@@ -169,7 +167,10 @@ const NavMenu = styled.div`
   position: relative;
   margin-right: auto; //move to right close to logo
   margin-left: 25px; //distance from logo
-
+  > * {
+    display: flex;
+    align-items: center;
+  }
   a {
     display: flex;
     align-items: center;
